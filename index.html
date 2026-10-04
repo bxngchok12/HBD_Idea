@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Idea!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Kanit', sans-serif;
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 80%;
+            transition: all 0.5s ease;
+        }
+        h1 {
+            color: #ff6b81;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #555;
+            font-size: 1.1em;
+            line-height: 1.6;
+            display: none; /* ซ่อนข้อความไว้ก่อน */
+        }
+        .btn {
+            background-color: #ff6b81;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 107, 129, 0.4);
+            transition: transform 0.3s, background-color 0.3s;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #ff4757;
+            transform: scale(1.05);
+        }
+        .heart {
+            color: #ff6b81;
+            font-size: 3em;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .show-text p {
+            display: block;
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <!-- แนะนำให้ลิงก์ฟอนต์ภาษาไทยเพื่อความสวยงาม -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container" id="card">
+        <div class="heart">❤️</div>
+        <h1 id="title">มีของขวัญส่งมาให้!</h1>
+        <button class="btn" id="openBtn">เปิดกล่องของขวัญ</button>
+        
+        <!-- ข้อความที่จะโชว์หลังกดปุ่ม -->
+        <p>สุขสันต์วันเกิดนะไอเดีย 🎂<br><br>
+        ปีนี้ถึงเราจะอยู่ไกลกัน ไม่ได้ฉลองด้วยกันเหมือนคู่อื่น แต่ความรู้สึกและความห่วงใยไม่เคยลดลงเลยนะ ขอให้ปีนี้เป็นปีที่ดี มีความสุขมากๆ แล้วเดี๋ยวเราหาเวลามาเจอกันนะ<br><br>
+        รักนะครับ... จาก โชค</p>
+    </div>
+
+    <script>
+        document.getElementById("openBtn").addEventListener("click", function() {
+            // ซ่อนปุ่มและเปลี่ยนหัวข้อ
+            this.style.display = "none";
+            document.getElementById("title").innerText = "Happy Birthday Idea!";
+            
+            // แสดงข้อความ
+            document.getElementById("card").classList.add("show-text");
+        });
+    </script>
+
+</body>
+</html>
