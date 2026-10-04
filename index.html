@@ -25,6 +25,7 @@
             max-width: 400px;
             width: 80%;
             transition: all 0.5s ease;
+            position: relative;
         }
         h1 {
             color: #ff6b81;
@@ -36,6 +37,38 @@
             font-size: 1.1em;
             line-height: 1.6;
             display: none; /* ซ่อนข้อความไว้ก่อน */
+        }
+        .photo-gallery {
+            display: none; /* ซ่อนรูปภาพไว้ก่อน */
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .photo-item {
+            width: 100px;
+            height: 120px;
+            background: rgb(247, 219, 219);
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+        .photo-item:hover {
+            transform: scale(1.1);
+        }
+        .photo-item p {
+            display: block;
+            font-size: 0.8em;
+            margin: 5px 0 0;
         }
         .btn {
             background-color: #ff6b81;
@@ -69,6 +102,10 @@
             display: block;
             animation: fadeIn 1s ease-in;
         }
+        .show-text .photo-gallery {
+            display: flex;
+            animation: fadeIn 1s ease-in;
+        }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -85,9 +122,25 @@
         <button class="btn" id="openBtn">เปิดกล่องของขวัญ</button>
         
         <!-- ข้อความที่จะโชว์หลังกดปุ่ม -->
-        <p>สุขสันต์วันเกิดนะไอเดีย 🎂<br><br>
-        ปีนี้ถึงเราจะอยู่ไกลกัน ไม่ได้ฉลองด้วยกันเหมือนคู่อื่น แต่ความรู้สึกและความห่วงใยไม่เคยลดลงเลยนะ ขอให้ปีนี้เป็นปีที่ดี มีความสุขมากๆ แล้วเดี๋ยวเราหาเวลามาเจอกันนะ<br><br>
-        รักนะครับ... จาก โชค</p>
+        <p>Happy birthday na ka My little Idea 🎂<br><br>
+        เราขอให้มีตวามสุขมากๆ ยิ้มเย้อๆทุกวันเลยน้า เราอยู่ข้างๆตลอดเวลาเลยเน้อ รักที่สุดเลยนะตะไอเดียน้อยของเรา</p>
+       
+        <!-- รูปภาพที่จะโชว์หลังกดปุ่ม -->
+        <div class="photo-gallery">
+            <div class="photo-item">
+                <img src="URL_ของรูปที่1" alt="รูปที่ 1">
+                <p>Smile</p>
+                
+            </div>
+            <div class="photo-item">
+                <img src="URL_ของรูปที่2" alt="รูปที่ 2">
+                <p>Always Together</p>
+            </div>
+            <div class="photo-item">
+                <img src="URL_ของรูปที่3" alt="รูปที่ 3">
+                <p>My Birthday Girl</p>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -96,7 +149,7 @@
             this.style.display = "none";
             document.getElementById("title").innerText = "Happy Birthday Idea!";
             
-            // แสดงข้อความ
+            // แสดงข้อความและรูปภาพ
             document.getElementById("card").classList.add("show-text");
         });
     </script>
