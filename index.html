@@ -1,158 +1,616 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Idea!</title>
+
+    <title>Happy Birthday Idea 💗</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Itim&display=swap" rel="stylesheet">
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            padding: 0;
+            min-height: 100vh;
             font-family: 'Kanit', sans-serif;
-            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
-            height: 100vh;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,.8), transparent 25%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,.5), transparent 25%),
+                linear-gradient(135deg, #ffd6e7, #c8dcff, #e7d4ff);
+
+            position: relative;
+        }
+
+        /* ---------- ดาวพื้นหลัง ---------- */
+
+        .stars {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .stars span {
+            position: absolute;
+            color: white;
+            font-size: 12px;
+            opacity: .7;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        .stars span:nth-child(1) { top: 10%; left: 15%; }
+        .stars span:nth-child(2) { top: 20%; left: 80%; animation-delay: .5s; }
+        .stars span:nth-child(3) { top: 70%; left: 10%; animation-delay: 1s; }
+        .stars span:nth-child(4) { top: 80%; left: 85%; animation-delay: .3s; }
+        .stars span:nth-child(5) { top: 35%; left: 92%; animation-delay: .8s; }
+        .stars span:nth-child(6) { top: 90%; left: 40%; animation-delay: 1.2s; }
+
+        @keyframes twinkle {
+            from {
+                transform: scale(.7);
+                opacity: .3;
+            }
+            to {
+                transform: scale(1.4);
+                opacity: 1;
+            }
+        }
+
+        /* ---------- หัวใจลอย ---------- */
+
+        .floating-heart {
+            position: fixed;
+            bottom: -30px;
+            color: rgba(255, 105, 135, .5);
+            animation: floatUp linear infinite;
+            pointer-events: none;
+        }
+
+        .heart1 {
+            left: 10%;
+            font-size: 18px;
+            animation-duration: 8s;
+        }
+
+        .heart2 {
+            left: 30%;
+            font-size: 13px;
+            animation-duration: 11s;
+            animation-delay: 2s;
+        }
+
+        .heart3 {
+            left: 70%;
+            font-size: 20px;
+            animation-duration: 9s;
+            animation-delay: 1s;
+        }
+
+        .heart4 {
+            left: 90%;
+            font-size: 14px;
+            animation-duration: 12s;
+            animation-delay: 3s;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ---------- Card ---------- */
+
+        .container {
+            width: min(92%, 520px);
+            max-height: 90vh;
+            overflow-y: auto;
+
+            padding: 42px 35px;
+
             text-align: center;
+
+            background: rgba(255,255,255,.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255,255,255,.8);
+            border-radius: 32px;
+
+            box-shadow:
+                0 25px 70px rgba(130, 80, 130, .18),
+                inset 0 1px 0 rgba(255,255,255,.8);
+
+            position: relative;
+
+            animation: cardAppear 1s ease;
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ---------- หัวใจ ---------- */
+
+        .heart {
+            font-size: 62px;
+            display: inline-block;
+
+            filter: drop-shadow(0 8px 12px rgba(255, 80, 120, .25));
+
+            animation:
+                heartbeat 1.4s infinite,
+                heartGlow 2s infinite alternate;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.18);
+            }
+        }
+
+        @keyframes heartGlow {
+            from {
+                filter: drop-shadow(0 5px 8px rgba(255,80,120,.2));
+            }
+
+            to {
+                filter: drop-shadow(0 8px 20px rgba(255,80,120,.5));
+            }
+        }
+
+        /* ---------- Title ---------- */
+
+        h1 {
+            margin: 12px 0 8px;
+
+            font-family: 'Itim', cursive;
+            font-size: clamp(32px, 7vw, 48px);
+
+            background: linear-gradient(
+                90deg,
+                #ff6b91,
+                #ff8fab,
+                #b47cff
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* ---------- Button ---------- */
+
+        .btn {
+            border: none;
+
+            padding: 15px 30px;
+
+            font-family: 'Kanit', sans-serif;
+            font-size: 17px;
+
+            color: white;
+
+            border-radius: 50px;
+
+            cursor: pointer;
+
+            background: linear-gradient(
+                135deg,
+                #ff6b91,
+                #ff8fab
+            );
+
+            box-shadow:
+                0 10px 25px rgba(255, 107, 145, .35);
+
+            transition: all .3s ease;
+
+            position: relative;
             overflow: hidden;
         }
-        .container {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            max-width: 400px;
-            width: 80%;
-            transition: all 0.5s ease;
-            position: relative;
+
+        .btn::before {
+            content: "";
+            position: absolute;
+
+            width: 80px;
+            height: 100%;
+
+            top: 0;
+            left: -100px;
+
+            background: rgba(255,255,255,.4);
+
+            transform: skewX(-20deg);
+
+            transition: .5s;
         }
-        h1 {
-            color: #ff6b81;
-            font-size: 2em;
-            margin-bottom: 10px;
+
+        .btn:hover::before {
+            left: 120%;
         }
-        p {
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.04);
+
+            box-shadow:
+                0 15px 30px rgba(255, 107, 145, .45);
+        }
+
+        .btn:active {
+            transform: scale(.96);
+        }
+
+        /* ---------- Message ---------- */
+
+        .message {
+            display: none;
+
+            margin-top: 25px;
+
+            padding: 22px;
+
+            border-radius: 22px;
+
+            background: rgba(255,255,255,.55);
+
+            border: 1px solid rgba(255,255,255,.8);
+
             color: #555;
-            font-size: 1.1em;
-            line-height: 1.6;
-            display: none; /* ซ่อนข้อความไว้ก่อน */
+
+            font-size: 17px;
+            line-height: 1.9;
+
+            box-shadow:
+                inset 0 1px 10px rgba(255,255,255,.5);
         }
+
+        .message .big {
+            font-family: 'Itim', cursive;
+            font-size: 25px;
+            color: #ff668b;
+        }
+
+        /* ---------- Gallery ---------- */
+
         .photo-gallery {
-            display: none; /* ซ่อนรูปภาพไว้ก่อน */
-            justify-content: space-around;
-            flex-wrap: wrap;
+            display: none;
+
             margin-top: 30px;
+
+            gap: 18px;
+
+            justify-content: center;
+            align-items: center;
+
+            flex-wrap: wrap;
         }
+
         .photo-item {
-            width: 100px;
-            height: 120px;
-            background: rgb(247, 219, 219);
-            border: 1px solid #ddd;
-            padding: 5px;
+            width: 125px;
+            height: 155px;
+
+            padding: 7px 7px 25px;
+
+            background: #fff;
+
             border-radius: 5px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+
+            box-shadow:
+                0 8px 20px rgba(80,60,100,.18);
+
             position: relative;
-            margin-bottom: 15px;
+
+            transition: all .4s ease;
         }
+
+        .photo-item:nth-child(1) {
+            transform: rotate(-5deg);
+        }
+
+        .photo-item:nth-child(2) {
+            transform: rotate(3deg);
+        }
+
+        .photo-item:nth-child(3) {
+            transform: rotate(-2deg);
+        }
+
+        .photo-item:hover {
+            transform:
+                translateY(-12px)
+                rotate(0deg)
+                scale(1.06);
+
+            z-index: 5;
+        }
+
         .photo-item img {
             width: 100%;
-            height: 100%;
+            height: 120px;
+
             object-fit: cover;
+
             border-radius: 3px;
         }
-        .photo-item:hover {
-            transform: scale(1.1);
+
+        .photo-caption {
+            position: absolute;
+
+            bottom: 4px;
+            left: 0;
+            right: 0;
+
+            font-family: 'Itim', cursive;
+            color: #777;
+            font-size: 14px;
         }
-        .photo-item p {
+
+        /* ---------- Show Animation ---------- */
+
+        .show-text .message {
             display: block;
-            font-size: 0.8em;
-            margin: 5px 0 0;
+            animation: fadeUp 1s ease;
         }
-        .btn {
-            background-color: #ff6b81;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 107, 129, 0.4);
-            transition: transform 0.3s, background-color 0.3s;
-            margin-top: 20px;
-        }
-        .btn:hover {
-            background-color: #ff4757;
-            transform: scale(1.05);
-        }
-        .heart {
-            color: #ff6b81;
-            font-size: 3em;
-            margin-bottom: 20px;
-            display: inline-block;
-            animation: heartbeat 1.5s infinite;
-        }
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-        .show-text p {
-            display: block;
-            animation: fadeIn 1s ease-in;
-        }
+
         .show-text .photo-gallery {
             display: flex;
-            animation: fadeIn 1s ease-in;
+            animation: fadeUp 1.2s ease;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        .show-text .heart {
+            animation:
+                heartbeat 1.4s infinite,
+                heartGlow 2s infinite alternate;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ---------- Divider ---------- */
+
+        .divider {
+            margin: 20px auto;
+
+            width: 100px;
+            height: 2px;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #ff9bb3,
+                transparent
+            );
+        }
+
+        /* ---------- Mobile ---------- */
+
+        @media (max-width: 500px) {
+
+            .container {
+                padding: 32px 20px;
+                border-radius: 25px;
+            }
+
+            .heart {
+                font-size: 52px;
+            }
+
+            .photo-item {
+                width: 105px;
+                height: 135px;
+            }
+
+            .photo-item img {
+                height: 102px;
+            }
+
+            .message {
+                font-size: 15px;
+            }
         }
     </style>
-    <!-- แนะนำให้ลิงก์ฟอนต์ภาษาไทยเพื่อความสวยงาม -->
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-    <div class="container" id="card">
-        <div class="heart">❤️</div>
-        <h1 id="title">มีของขวัญส่งมาให้!</h1>
-        <button class="btn" id="openBtn">เปิดกล่องของขวัญ</button>
-        
-        <!-- ข้อความที่จะโชว์หลังกดปุ่ม -->
-        <p>Happy birthday na ka My little Idea 🎂<br><br>
-        เราขอให้มีตวามสุขมากๆ ยิ้มเย้อๆทุกวันเลยน้า เราอยู่ข้างๆตลอดเวลาเลยเน้อ รักที่สุดเลยนะตะไอเดียน้อยของเรา</p>
-       
-        <!-- รูปภาพที่จะโชว์หลังกดปุ่ม -->
-        <div class="photo-gallery">
-            <div class="photo-item">
-                <img src="199610.jpg" alt="รูปที่ 1">
-                
-                
-            </div>
-            <div class="photo-item">
-                <img src="199620.jpg" alt="รูปที่ 2">
-                
-            </div>
-            <div class="photo-item">
-                <img src="199621.jpg" alt="รูปที่ 3">
-                
-            </div>
-        </div>
+    <!-- ดาว -->
+    <div class="stars">
+        <span>✦</span>
+        <span>✧</span>
+        <span>✦</span>
+        <span>✧</span>
+        <span>✦</span>
+        <span>✧</span>
     </div>
 
+    <!-- หัวใจลอย -->
+    <div class="floating-heart heart1">♡</div>
+    <div class="floating-heart heart2">♡</div>
+    <div class="floating-heart heart3">♡</div>
+    <div class="floating-heart heart4">♡</div>
+
+
+    <div class="container" id="card">
+
+        <div class="heart">❤️</div>
+
+        <h1 id="title">
+            มีของขวัญส่งมาให้!
+        </h1>
+
+        <div class="subtitle">
+            เปิดดูสิ มีอะไรอยู่ข้างใน 🎁
+        </div>
+
+        <button class="btn" id="openBtn">
+            💝 เปิดกล่องของขวัญ
+        </button>
+
+
+        <!-- ข้อความ -->
+
+        <div class="message">
+
+            <div class="big">
+                Happy Birthday na ka My little Idea 🎂💗
+            </div>
+
+            <div class="divider"></div>
+
+            เราขอให้มีความสุขมาก ๆ เลยน้า
+            <br>
+
+            ยิ้มเยอะ ๆ ในทุกวันเลยนะ 😊
+
+            <br>
+
+            ไม่ว่าจะเจอเรื่องอะไร
+            <br>
+
+            เราจะอยู่ข้าง ๆ ไอเดียตลอดเวลาเลยนะ
+
+            <br><br>
+
+            <span style="color:#ff6b91;">
+                รักที่สุดเลยนะ
+                ตะไอเดียน้อยของเรา 🐰💗
+            </span>
+
+        </div>
+
+
+        <!-- รูป -->
+
+        <div class="photo-gallery">
+
+            <div class="photo-item">
+                <img src="199610.jpg" alt="รูปของเรา">
+                <div class="photo-caption">ความทรงจำ 💗</div>
+            </div>
+
+            <div class="photo-item">
+                <img src="199620.jpg" alt="รูปของเรา">
+                <div class="photo-caption">น่ารักที่สุด 🥰</div>
+            </div>
+
+            <div class="photo-item">
+                <img src="199621.jpg" alt="รูปของเรา">
+                <div class="photo-caption">My Idea 🌷</div>
+            </div>
+
+        </div>
+
+    </div>
+
+
     <script>
-        document.getElementById("openBtn").addEventListener("click", function() {
-            // ซ่อนปุ่มและเปลี่ยนหัวข้อ
-            this.style.display = "none";
-            document.getElementById("title").innerText = "Happy Birthday Idea!";
-            
-            // แสดงข้อความและรูปภาพ
-            document.getElementById("card").classList.add("show-text");
-        });
+
+        document
+            .getElementById("openBtn")
+            .addEventListener("click", function () {
+
+                /* ซ่อนปุ่ม */
+
+                this.style.display = "none";
+
+
+                /* เปลี่ยนหัวข้อ */
+
+                document
+                    .getElementById("title")
+                    .innerText = "Happy Birthday Idea! 💗";
+
+
+                /* แสดงข้อความ */
+
+                document
+                    .getElementById("card")
+                    .classList.add("show-text");
+
+
+                /* สร้างหัวใจเพิ่ม */
+
+                for (let i = 0; i < 18; i++) {
+
+                    const heart = document.createElement("div");
+
+                    heart.innerHTML = "💗";
+
+                    heart.style.position = "fixed";
+                    heart.style.left = Math.random() * 100 + "%";
+                    heart.style.bottom = "-30px";
+
+                    heart.style.fontSize =
+                        (12 + Math.random() * 18) + "px";
+
+                    heart.style.zIndex = "10";
+                    heart.style.pointerEvents = "none";
+
+                    heart.style.animation =
+                        `floatUp ${5 + Math.random() * 5}s linear forwards`;
+
+                    document.body.appendChild(heart);
+
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 10000);
+                }
+
+            });
+
     </script>
 
 </body>
 </html>
+```
